@@ -24,8 +24,4 @@ RCT_EXTERN_METHOD(sendMessage:(NSString*)message userId:(NSString*)userId)
 
 RCT_EXTERN_METHOD(disconnectFromPeer:(NSString*)peerId);
 
-- (NSArray<NSString *> *)supportedEvents {
-	return @[@"lostUser", @"detectedUser", @"messageReceived", @"connectedToUser", @"receivedInvitation"];
-}
-
 @end

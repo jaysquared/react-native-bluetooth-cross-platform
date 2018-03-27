@@ -185,8 +185,4 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
       self.sendEvent(withName: "detectedUser", body: user.getJSUser("new user"))
     }
   }
-  
-  override open func supportedEvents() -> [String]! {
-    return ["lostUser","detectedUser", "messageReceived", "connectedToUser", "receivedInvitation"]
-  }
 }
