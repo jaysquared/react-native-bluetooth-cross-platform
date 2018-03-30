@@ -3,7 +3,6 @@ class EventEmitter {
   /// Shared Instance.
   public static var sharedInstance = EventEmitter()
 
-  // ReactNativeEventEmitter is instantiated by React Native with the bridge.
   private static var eventEmitter: NetworkManagerEventEmitter!
 
   private init() {}
@@ -20,8 +19,6 @@ class EventEmitter {
   /// All Events which must be support by React Native.
   lazy var allEvents: [String] = {
     var allEventNames: [String] = ["lostUser","detectedUser", "messageReceived", "connectedToUser", "receivedInvitation"]
-    
-    // Append all events here
     
     return allEventNames
   }()
