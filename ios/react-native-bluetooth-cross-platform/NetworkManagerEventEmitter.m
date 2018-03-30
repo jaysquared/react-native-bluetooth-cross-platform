@@ -1,5 +1,4 @@
 //
-//  ReactNativeEventEmitter.m
 // See: http://facebook.github.io/react-native/releases/0.43/docs/native-modules-ios.html#exporting-swift
 //
 

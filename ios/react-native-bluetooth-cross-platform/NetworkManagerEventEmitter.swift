@@ -1,6 +1,3 @@
-//
-//  ReactNativeEventEmitter.swift
-//
 import Foundation
 
 @objc(NetworkManagerEventEmitter)
