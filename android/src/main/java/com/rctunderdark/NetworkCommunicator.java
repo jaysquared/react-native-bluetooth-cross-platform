@@ -22,8 +22,8 @@ public class NetworkCommunicator extends TransportHandler implements MessageDeco
     private String typeDelimeter = "%$#";
     private String deviceDelimeter = "$#%";
     private String deviceID = Settings.Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-    private String displayName;
-    private Timer broadcastTimer;
+    private String displayName = BluetoothAdapter.getDefaultAdapter().getName();
+    private Timer broadcastTimer = null;
     private Boolean isRunning = false;
     private User.PeerType type = User.PeerType.OFFLINE;
 
@@ -109,7 +109,9 @@ public class NetworkCommunicator extends TransportHandler implements MessageDeco
 
     @Override
     public void stopTransport() {
-        broadcastTimer.cancel();
+        if (broadcastTimer != null) {
+            broadcastTimer.cancel();
+        }
         broadcastTimer = null;
         isRunning = false;
     }
