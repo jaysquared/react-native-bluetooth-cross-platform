@@ -5,7 +5,7 @@ import {
 import React from 'react'
 
 var NativeManager = NativeModules.NetworkManager
-var NativeEmitter =  new NativeEventEmitter(NativeModules.NetworkManager)
+var NativeEmitter =  new NativeEventEmitter(NativeModules.NetworkManagerEventEmitter)
 
 class NetworkManager {
   // kind can be one of "WIFI", "BT", and "WIFI-BT"
