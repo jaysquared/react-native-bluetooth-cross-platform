@@ -23,7 +23,7 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
     DispatchQueue.main.async(execute: {
       if self.advertiseTimer == nil {
         self.advertiseTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.broadcastType), userInfo: nil, repeats: true)
-        RunLoop.main.add(self.advertiseTimer!, forMode: RunLoopMode.defaultRunLoopMode)
+        RunLoop.main.add(self.advertiseTimer!, forMode: RunLoop.Mode.default)
       }
     })
   }
@@ -128,7 +128,7 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
   open func getDisplayName(frameData: Data)-> String? {
     let str: String = String(data: frameData, encoding: String.Encoding.utf8) ?? ""
     if let endIndex: Int = str.getIndexOf(displayDelimeter) {
-      let displayName = str.substring(with: str.startIndex..<str.characters.index(str.startIndex, offsetBy: endIndex))
+      let displayName = str.substring(with: str.startIndex..<str.index(str.startIndex, offsetBy: endIndex))
       return displayName
     }
     return nil
@@ -137,7 +137,7 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
     let str: String = String(data: frameData, encoding: String.Encoding.utf8) ?? ""
     if let startIndex: Int = str.getIndexOf(displayDelimeter) {
       if let endIndex: Int = str.getIndexOf(typeDelimeter) {
-        return str.substring(with: str.characters.index(str.startIndex, offsetBy: startIndex)..<str.characters.index(str.startIndex, offsetBy: endIndex))
+        return str.substring(with: str.index(str.startIndex, offsetBy: startIndex)..<str.index(str.startIndex, offsetBy: endIndex))
       }
     }
     return nil
@@ -146,7 +146,7 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
     let str: String = String(data: frameData, encoding: String.Encoding.utf8) ?? ""
     if let startIndex: Int = str.getIndexOf(typeDelimeter) {
       if let endIndex: Int = str.getIndexOf(deviceDelimeter) {
-        let deviceId = str.substring(with: str.characters.index(str.startIndex, offsetBy: startIndex)..<str.characters.index(str.startIndex, offsetBy: endIndex))
+        let deviceId = str.substring(with: str.index(str.startIndex, offsetBy: startIndex)..<str.index(str.startIndex, offsetBy: endIndex))
         return deviceId
       }
     }
@@ -155,7 +155,7 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
   open func getMessage(frameData: Data)-> String? {
     let str: String = String(data: frameData, encoding: String.Encoding.utf8) ?? ""
     if let startIndex: Int = str.getIndexOf(deviceDelimeter) {
-      let start = str.index(str.startIndex, offsetBy: startIndex + deviceDelimeter.characters.count)
+      let start = str.index(str.startIndex, offsetBy: startIndex + deviceDelimeter.count)
       let message = str.substring(with: start..<str.endIndex)
       return message
     }
