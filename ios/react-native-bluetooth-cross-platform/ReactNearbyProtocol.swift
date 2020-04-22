@@ -5,6 +5,7 @@ protocol ReactNearby {
   func browse(_ kind: String) -> Void
   func stopBrowsing()
   func advertise(_ kind: String) -> Void
+  func getUserId(_ callback: RCTResponseSenderBlock)
   func stopAdvertising()
   func getConnectedPeers(_ callback: RCTResponseSenderBlock)
   func getNearbyPeers(_ callback: RCTResponseSenderBlock)
