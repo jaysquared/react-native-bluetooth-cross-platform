@@ -21,6 +21,9 @@ class NetworkManager {
   advertise(kind) {
     NativeManager.advertise(kind)
   }
+  getUserId(callback) {
+    NativeManager.getUserId(callback)
+  }
   stopAdvertising() {
     NativeManager.stopAdvertising()
   }
