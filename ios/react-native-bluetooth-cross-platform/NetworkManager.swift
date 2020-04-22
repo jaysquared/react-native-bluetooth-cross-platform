@@ -16,6 +16,10 @@ public class NetworkManager: NetworkCommunicator, ReactNearby {
     }
   }
   
+  @objc public  func getUserId(_ callback: RCTResponseSenderBlock) {
+    super.getNativeUserId(callback);
+  }
+  
   @objc public  func stopAdvertising() {
     if self.type == .ADVERTISER_BROWSER {
       self.type = .BROWSER
