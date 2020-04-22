@@ -35,6 +35,11 @@ public class NetworkCommunicator: TransportHandler, MessageEncoder, MessageDecod
     }
   }
   
+  open func getNativeUserId(_ callback: RCTResponseSenderBlock) {
+    let myDeviceId: [Any] = [deviceId];
+    callback(myDeviceId)
+  }
+  
   // HANDLE RECIEVING NEW FRAME
   override open func transport(_ transport: UDTransport, link: UDLink, didReceiveFrame frameData: Data) {
     super.transport(transport, link: link, didReceiveFrame: frameData);
