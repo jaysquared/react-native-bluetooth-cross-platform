@@ -7,6 +7,8 @@
 RCT_EXTERN_METHOD(browse:(NSString*)kind)
 
 RCT_EXTERN_METHOD(advertise:(NSString*)kind)
+  
+RCT_EXTERN_METHOD(getUserId:(RCTResponseSenderBlock)callback)
 
 RCT_EXTERN_METHOD(stopAdvertising)
 
