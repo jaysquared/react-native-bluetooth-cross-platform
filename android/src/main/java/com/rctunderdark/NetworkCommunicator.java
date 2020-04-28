@@ -99,6 +99,10 @@ public class NetworkCommunicator extends TransportHandler implements MessageDeco
                 }
         }
     }
+    
+    public void getUserId(Callback successCallback) {
+        successCallback.invoke(deviceID);
+    }
 
     @Override
     public void initTransport(String kind, User.PeerType inType) {
