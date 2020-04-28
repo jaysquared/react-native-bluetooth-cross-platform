@@ -29,6 +29,10 @@ public class NetworkManager extends ReactContextBaseJavaModule implements ReactN
         this.networkCommunicator.sendMessage(message, id);
     }
     @ReactMethod
+    public void getUserId(Callback successCallback) {
+        this.networkCommunicator.getUserId(successCallback);
+    }
+    @ReactMethod
     public void advertise(String kind) {
         if(this.type == User.PeerType.BROWSER) {
             this.type = User.PeerType.ADVERTISER_BROWSER;
