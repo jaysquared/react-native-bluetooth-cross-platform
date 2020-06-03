@@ -6,7 +6,6 @@ import {
 import React from 'react'
 
 var NativeManager = NativeModules.NetworkManager
-
 var NativeEmitter = new NativeEventEmitter(Platform.select({
   ios: NativeModules.NetworkManagerEventEmitter,
   android: NativeModules.NetworkManager,
@@ -15,42 +14,44 @@ var NativeEmitter = new NativeEventEmitter(Platform.select({
 class NetworkManager {
   // kind can be one of "WIFI", "BT", and "WIFI-BT"
   browse(kind) {
-    NativeManager.browse(kind)
+    NativeManager.browse(kind);
   }
+
   // kind can be one of "WIFI", "BT", and "WIFI-BT"
   advertise(kind) {
-    NativeManager.advertise(kind)
+    NativeManager.advertise(kind);
   }
-  getUserId(callback) {
-    NativeManager.getUserId(callback)
-  }
+
   stopAdvertising() {
-    NativeManager.stopAdvertising()
+    NativeManager.stopAdvertising();
   }
+
   stopBrowsing() {
-    NativeManager.stopBrowsing()
+    NativeManager.stopBrowsing();
   }
+
   disconnectFromPeer(peerId) {
-    NativeManager.disconnectFromPeer(peerId)
+    NativeManager.disconnectFromPeer(peerId);
   }
+
   inviteUser(peerId) {
-    NativeManager.inviteUser(peerId)
+    NativeManager.inviteUser(peerId);
   }
+
   sendMessage(message, peerId) {
-    NativeManager.sendMessage(message, peerId)
+    NativeManager.sendMessage(message, peerId);
   }
+
   acceptInvitation(peerId) {
-    NativeManager.acceptInvitation(peerId)
+    NativeManager.acceptInvitation(peerId);
   }
-  getNearbyPeers(callback) {
-    NativeManager.getNearbyPeers((peers) => {
-      callback(peers)
-    })
+
+  async getNearbyPeers(callback) {
+    return await NativeManager.getNearbyPeers();
   }
-  getConnectedPeers(callback) {
-    NativeManager.getConnectedPeers((peers) => {
-      callback(peers)
-    })
+  
+  async getConnectedPeers(peers) {
+    return await NativeManager.getConnectedPeers();
   }
   /*listener callbacks
   peer contains .id (string), type(string), connected(bool), message(string), display name(string)
