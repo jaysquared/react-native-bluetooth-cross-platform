@@ -5,6 +5,10 @@ import Underdark
 public class NetworkManager: NetworkCommunicator, ReactNearby {
   fileprivate var type: User.PeerType = User.PeerType.OFFLINE
 
+  @objc open class func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+
   //  MARK: REACT NEARBY UTILITY PROTOCOOL
   @objc public  func advertise(_ kind: String) -> Void {
     if self.type == .BROWSER {

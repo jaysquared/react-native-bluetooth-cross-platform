@@ -7,6 +7,10 @@ open class NetworkManagerEventEmitter: RCTEventEmitter {
     super.init()
     EventEmitter.sharedInstance.registerEventEmitter(eventEmitter: self)
   }
+
+  @objc override open class func requiresMainQueueSetup() -> Bool {
+    return true
+  }
   
   /// Base overide for RCTEventEmitter.
   ///
