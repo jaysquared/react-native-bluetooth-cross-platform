@@ -6,8 +6,8 @@ declare module 'react-native-bluetooth-cross-platform' {
     id: string,
     type: BroadcastType,
     connected: boolean,
-    displayName: string;
-    message?: any;
+    name: string;
+    message?: string;
   }
   
   /**

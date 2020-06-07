@@ -7,6 +7,7 @@ import android.provider.Settings.Secure;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.Callback;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Timer;
